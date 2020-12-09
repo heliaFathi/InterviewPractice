@@ -1,0 +1,26 @@
+
+  <h5>Select Job: </h5>
+
+  <div *ngIf="errorMessage" class="alert alert-danger">{{errorMessage}}</div>
+  <div *ngIf="!errorMessage">
+    <div class="form-group">
+      <select class="form-control col-6" ngModel="jobs" name="jobs" id="jobs" (change)="onChange($event.target.value)">
+        <option *ngFor="let j of jobs" [value]="j.jobId">
+          {{j.name}}
+        </option>
+      </select>
+    </div>
+    <div class="form-group" *ngIf="selectedJobDesc">
+      <p class="p-10"><strong>Job Skills</strong></p>
+      <p class="p-10">{{selectedJobDesc}}</p>
+    </div>
+    <div class="form-group">
+      <div *ngIf="bestCandidate" class="alert alert-success" role="alert">
+        <h4 class="alert-heading">Best Candidate</h4>
+        <p class="pb-10"><strong>ID:</strong> {{bestCandidate.candidateId}}</p>
+        <p class="pb-10"><strong>Name:</strong> {{bestCandidate.name}}</p>
+        <p class="pb-10"><strong>Skills:</strong> {{bestCandidate.skillTags}} </p>
+      </div>
+    </div>
+  </div>
+
